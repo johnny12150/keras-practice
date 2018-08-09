@@ -12,6 +12,8 @@ from matplotlib import pyplot as plt
 # 建立簡單的線性執行的模型
 model = Sequential()
 # Add Input layer, 隱藏層(hidden layer) 有 256個輸出變數
+# relu會排除負值(ReLu是一種activation function)
+# kernel_initializer='normal'依據常態分配產生亂數，給梯度下降當起始值
 model.add(Dense(units=256, input_dim=784, kernel_initializer='normal', activation='relu'))
 # Add output layer, 做出反應的層
 model.add(Dense(units=10, kernel_initializer='normal', activation='softmax'))
