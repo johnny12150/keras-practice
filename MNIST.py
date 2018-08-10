@@ -20,6 +20,8 @@ model.add(Dense(units=10, kernel_initializer='normal', activation='softmax'))
 
 # 編譯: 選擇損失函數、優化方法及成效衡量方式
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+print('model details')
+model.summary()
 
 # 將 training 的 label 進行 one-hot encoding，例如數字 7 經過 One-hot encoding 轉換後是 0000001000，即第7個值為 1
 y_TrainOneHot = np_utils.to_categorical(y_train)
@@ -29,6 +31,7 @@ y_TestOneHot = np_utils.to_categorical(y_test)
 X_train_2D = X_train.reshape(60000, 28 * 28).astype('float32')
 X_test_2D = X_test.reshape(10000, 28 * 28).astype('float32')
 
+# Split the dataset into the training set and the validation set
 x_Train_norm = X_train_2D / 255
 x_Test_norm = X_test_2D / 255
 
